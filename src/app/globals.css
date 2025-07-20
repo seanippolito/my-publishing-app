@@ -1,26 +1,200 @@
-@import "tailwindcss";
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Tailwind v4's @theme directive allows inline customization.
+  This is where you'd define custom colors, fonts, etc.,
+  if you don't use a tailwind.config.ts file.
+  For simple setups, this is often sufficient.
+*/
+@theme inline {
+  --color-primary: #8e2de2; /* Deep purple */
+  --color-secondary: #4a00e0; /* Darker purple */
+  --color-accent: #ffb700; /* Amber for highlights */
+  --color-text-light: #f8f8f8;
+  --color-text-dark: #333333;
+  --color-background-light: #ffffff;
+  --color-background-dark: #1a1a1a;
+
+  /* Example custom font */
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Roboto', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base styles for the app */
+html,
+body {
+  height: 100%;
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  background-color: var(--color-background-light);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html,
+  body {
+    color: var(--color-text-light);
+    background-color: var(--color-background-dark);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Lexical Editor Styles */
+.editor-root {
+  position: relative;
+  background-color: var(--color-background-light);
+  color: var(--color-text-dark);
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 300px;
+  resize: vertical; /* Allow vertical resizing for better UX */
+  display: flex; /* Ensures contenteditable fills available space */
+  flex-direction: column;
+}
+
+.editor-root .LexicalContentEditable {
+  outline: none; /* Remove default focus outline */
+  min-height: 250px;
+  padding: 8px;
+  flex-grow: 1; /* Allow content to grow */
+  font-size: 1rem;
+  line-height: 1.5;
+  caret-color: var(--color-primary); /* Custom caret color */
+}
+
+/* Dark mode adjustments for editor */
+.dark .editor-root {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-light);
+  border-color: var(--color-accent);
+}
+
+.editor-placeholder {
+  position: absolute;
+  top: 16px; /* Adjust based on padding/toolbar height */
+  left: 24px; /* Adjust based on padding/toolbar width */
+  color: #999;
+  pointer-events: none;
+  font-size: 1rem;
+}
+
+/* Basic Text Formatting */
+.editor-paragraph {
+  margin-bottom: 1em;
+}
+
+.editor-h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-family: var(--font-heading);
+}
+
+.editor-h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+  font-family: var(--font-heading);
+}
+
+.editor-text-bold {
+  font-weight: bold;
+}
+
+.editor-text-italic {
+  font-style: italic;
+}
+
+.editor-text-underline {
+  text-decoration: underline;
+}
+
+.editor-quote {
+  border-left: 4px solid var(--color-primary);
+  padding-left: 1rem;
+  margin-left: 1rem;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1em;
+}
+
+.dark .editor-quote {
+  border-left-color: var(--color-accent);
+  color: #bbb;
+}
+
+.editor-ul, .editor-ol {
+  margin-left: 2em;
+  margin-bottom: 1em;
+}
+
+.editor-listitem {
+  list-style: inherit; /* Use default list styling */
+  margin-bottom: 0.5em;
+}
+
+.editor-text-code {
+  font-family: monospace;
+  background-color: #eee;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.dark .editor-text-code {
+  background-color: #444;
+  color: #fff;
+}
+
+/* Add more styles as needed for other theme classes */
+
+/* Custom Scrollbar Styles for Webkit browsers (Chrome, Safari, Edge) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; /* For horizontal scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-background-light); /* Lighter track in light mode */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-primary); /* Primary color thumb in light mode */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary); /* Slightly darker on hover */
+}
+
+/* Dark mode scrollbar */
+@media (prefers-color-scheme: dark) {
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--color-background-dark); /* Darker track in dark mode */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-accent); /* Accent color thumb in dark mode */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent); /* Slightly darker on hover */
+  }
+}
+
+/* For Firefox (less granular control) */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-background-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  .custom-scrollbar {
+    scrollbar-color: var(--color-accent) var(--color-background-dark);
+  }
 }
