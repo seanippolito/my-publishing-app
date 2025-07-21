@@ -4,7 +4,7 @@ import { Inter, Roboto } from 'next/font/google'; // Example: importing fonts
 import {ClerkProvider} from '@clerk/nextjs';
 import './globals.css';
 import { Toaster } from 'react-hot-toast'; // Add this import
-
+import { dark, neobrutalism, shadesOfPurple } from '@clerk/themes'
 
 // Configure fonts (Next.js font optimization)
 const inter = Inter({
@@ -31,7 +31,16 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <ClerkProvider>
+        <ClerkProvider
+            appearance={{
+                baseTheme: [neobrutalism],
+                variables: { colorPrimary: 'red' },
+                signIn: {
+                    baseTheme: [neobrutalism],
+                    variables: { colorPrimary: 'green' },
+                },
+            }}
+        >
             <html lang="en" className={`${inter.variable} ${roboto.variable}`}>
                 <body>
                     {children}

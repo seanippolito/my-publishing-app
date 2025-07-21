@@ -2,7 +2,7 @@
 'use client'; // This component needs client-side interactivity
 
 import Link from 'next/link';
-import { SignInButton, SignUpButton } from '@clerk/nextjs';
+import {SignedIn, SignedOut, SignInButton, SignUpButton, UserButton} from '@clerk/nextjs';
 import { SparklesIcon, UsersIcon, BookOpenIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/components/ui/button';
 
@@ -16,13 +16,23 @@ export default function HomePage() {
                     <img src="/images/creathor-hammer-logo.svg" alt="Creathor Logo" className="h-1/12 md:h-1/12 w-1/12" />
                     <span className="text-3xl md:text-4xl font-heading font-bold text-primary dark:text-accent">Creathor</span>
                 </div>
-                <nav className="space-x-3 md:space-x-4">
-                    <Link href="/dashboard" passHref>
-                        <Button variant="ghost" className="text-white md:text-lg px-3 py-2">Dashboard</Button>
-                    </Link>
-                    <SignInButton mode="modal">
-                        <Button variant="outline" className="text-base md:text-lg px-3 py-2">Sign In</Button>
-                    </SignInButton>
+                <nav className="flex justify-between items-center space-x-3 md:space-x-4">
+                    <SignedOut>
+                        <SignInButton>
+                            <button className=" bg-green-600">Custom sign in button</button>
+                        </SignInButton>
+                        <SignUpButton>
+                            <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+                                Sign Up
+                            </button>
+                        </SignUpButton>
+                    </SignedOut>
+                    <SignedIn>
+                        <Link href="/dashboard" passHref>
+                            <Button variant="ghost" className="text-white md:text-lg px-3 py-2">Dashboard</Button>
+                        </Link>
+                        <UserButton />
+                    </SignedIn>
                 </nav>
             </header>
 
@@ -56,19 +66,17 @@ export default function HomePage() {
                     <h2 className="text-4xl md:text-5xl font-heading font-bold mb-16 text-center text-primary dark:text-accent">
                         Unlock Your Full Creative Potential
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
                         {/* Feature 1: AI-Enhanced Creation */}
-                        <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg transform transition-transform hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center text-center">
-                            <SparklesIcon className="h-16 w-16 mb-6 text-accent" />
-                            <h3 className="text-2xl font-heading font-semibold mb-3">AI-Powered Tools</h3>
-                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                From generating plot ideas and expanding segments to perfecting grammar and crafting stunning cover art, our AI assists your every step.
-                            </p>
-                        </div>
+                    <div className="bg-white dark:bg-gray-800 mb-4 p-8 rounded-xl shadow-lg transform transition-transform hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center text-center">
+                        <SparklesIcon className="h-16 w-16 mb-6 text-accent" />
+                        <h3 className="text-2xl font-heading font-semibold mb-3">AI-Powered Tools</h3>
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            From generating plot ideas and expanding segments to perfecting grammar and crafting stunning cover art, our AI assists your every step.
+                        </p>
                     </div>
 
                     {/* Feature 2: Collaborative Community */}
-                    <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg transform transition-transform hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center text-center">
+                    <div className="bg-white dark:bg-gray-800 mb-4 p-8 rounded-xl shadow-lg transform transition-transform hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center text-center">
                         <UsersIcon className="h-16 w-16 mb-6 text-accent" />
                         <h3 className="text-2xl font-heading font-semibold mb-3">Collaborative Community</h3>
                         <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
