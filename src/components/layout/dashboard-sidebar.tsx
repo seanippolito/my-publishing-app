@@ -62,12 +62,12 @@ export default function DashboardSidebar({ userName }: DashboardSidebarProps) {
                 <p className="font-heading font-semibold text-lg">{userName}</p>
                 <p className="text-sm opacity-80 mb-4">Publisher Account</p>
                 {/* Sign Out Button */}
-                <SignOutButton signOutCallback={() => window.location.href = '/'}>
-                    <Button className="w-full flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-semibold">
-                        <ArrowRightStartOnRectangleIcon className="h-5 w-5 mr-2" />
-                        Sign Out
-                    </Button>
-                </SignOutButton>
+                {/*<SignOutButton signOutCallback={() => window.location.href = '/'}>*/}
+                {/*    <Button className="w-full flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-semibold">*/}
+                {/*        <ArrowRightStartOnRectangleIcon className="h-5 w-5 mr-2" />*/}
+                {/*        Sign Out*/}
+                {/*    </Button>*/}
+                {/*</SignOutButton>*/}
             </div>
         </aside>
     );

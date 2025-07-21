@@ -30,12 +30,12 @@ const editorNodes: Array<typeof LexicalNode> = [
     HeadingNode,
     QuoteNode,
     ListNode,
-    ListItemNode,
+    // ListItemNode,
     CodeNode,
     CodeHighlightNode,
     TableNode,
-    TableCellNode,
-    TableRowNode,
+    // TableCellNode,
+    // TableRowNode,
     AutoLinkNode,
     LinkNode,
 ];
@@ -72,23 +72,23 @@ export default function RichTextEditor({ initialContent, onContentChange }: Rich
                 <ToolbarPlugin />
 
                 {/* Content Area wrapped with LexicalErrorBoundary */}
-                <LexicalErrorBoundary fallback={
-                    <div className="editor-error-fallback text-red-500 p-4">
-                        <p>Lexical Editor encountered an error. Please try refreshing.</p>
-                    </div>
-                }>
-                    <div className="editor-inner flex-grow overflow-auto p-2">
-                        <RichTextPlugin
-                            contentEditable={<ContentEditable className="LexicalContentEditable" />}
-                            placeholder={
-                                <div className="editor-placeholder">
-                                    Start writing your amazing story here...
-                                </div>
-                            }
-                            // ErrorBoundary prop removed as we are wrapping the plugin with LexicalErrorBoundary component
-                        />
-                    </div>
-                </LexicalErrorBoundary>
+                {/*<LexicalErrorBoundary fallback={*/}
+                {/*    <div className="editor-error-fallback text-red-500 p-4">*/}
+                {/*        <p>Lexical Editor encountered an error. Please try refreshing.</p>*/}
+                {/*    </div>*/}
+                {/*}>*/}
+                {/*    <div className="editor-inner flex-grow overflow-auto p-2">*/}
+                {/*        <RichTextPlugin*/}
+                {/*            contentEditable={<ContentEditable className="LexicalContentEditable" />}*/}
+                {/*            placeholder={*/}
+                {/*                <div className="editor-placeholder">*/}
+                {/*                    Start writing your amazing story here...*/}
+                {/*                </div>*/}
+                {/*            }*/}
+                {/*            // ErrorBoundary prop removed as we are wrapping the plugin with LexicalErrorBoundary component*/}
+                {/*        />*/}
+                {/*    </div>*/}
+                {/*</LexicalErrorBoundary>*/}
 
                 {/* Plugins */}
                 <HistoryPlugin />
