@@ -33,6 +33,8 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
                     {children}
                 </main>
             </div>
+            {/* NEW: AI Chat Bubble - globally available in dashboard */}
+            <AIChatBubble />
         </div>
     );
 }

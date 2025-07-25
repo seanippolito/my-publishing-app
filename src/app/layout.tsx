@@ -48,8 +48,6 @@ export default function RootLayout({
                 <body>
                     {children}
                     <Toaster position="bottom-right" reverseOrder={false} />
-                    {/* NEW: AI Chat Bubble - globally available in dashboard */}
-                    <AIChatBubble />
                 </body>
             </html>
         </ClerkProvider>
