@@ -155,9 +155,9 @@ export default function BookEditPage({ params }: { params: { bookId: string  } }
                 </div>
 
                 {/* AI Assistant Sidebar */}
-                <div className="w-1/4 min-w-[250px] max-w-[350px] bg-gray-50 dark:bg-gray-700 rounded-lg p-4 overflow-y-auto hidden lg:block">
-                    <AISidebar editorContent={editorContent} />
-                </div>
+                {/*<div className="w-1/4 min-w-[250px] max-w-[350px] bg-gray-50 dark:bg-gray-700 rounded-lg p-4 overflow-y-auto hidden lg:block">*/}
+                {/*    <AISidebar editorContent={editorContent} />*/}
+                {/*</div>*/}
             </div>
         </div>
     );
