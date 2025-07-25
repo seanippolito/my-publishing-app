@@ -12,10 +12,10 @@ import {
 
 export default function QuickActions() {
     const actions = [
-        { name: 'Start New Book', href: '/dashboard/books/new', icon: PlusCircleIcon },
-        { name: 'Edit Existing Book', href: '/dashboard/books', icon: PencilSquareIcon },
-        { name: 'Explore AI Tools', href: '/dashboard/ai-tools', icon: LightBulbIcon },
-        { name: 'Promote Your Work', href: '/dashboard/community', icon: MegaphoneIcon }, // Link to community for now
+        { name: 'Start New Book', href: '/books/new', icon: PlusCircleIcon },
+        { name: 'Edit Existing Book', href: '/books', icon: PencilSquareIcon },
+        { name: 'Explore AI Tools', href: '/ai-tools', icon: LightBulbIcon },
+        { name: 'Promote Your Work', href: '/community', icon: MegaphoneIcon }, // Link to community for now
     ];
 
     return (

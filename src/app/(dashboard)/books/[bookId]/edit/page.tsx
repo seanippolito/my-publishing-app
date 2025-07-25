@@ -1,6 +1,7 @@
 // src/app/(dashboard)/books/[bookId]/edit/page.tsx
 'use client';
 
+import React from 'react'; // Ensure React is imported
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import RichTextEditor from '@/components/editor/rich-text-editor';
@@ -22,7 +23,7 @@ interface BookData {
     chapters: Chapter[]; // Use Chapter type
 }
 
-export default function BookEditPage({ params }: { params: { bookId: string } }) {
+export default function BookEditPage({ params }: { params: { bookId: string  } }) {
     const router = useRouter();
     const { bookId } = params;
     const [bookData, setBookData] = useState<BookData | null>(null);
@@ -85,7 +86,7 @@ export default function BookEditPage({ params }: { params: { bookId: string } })
 
         if (bookId === 'new') {
             const newBookId = 'mock-new-book-id-123';
-            router.push(`/dashboard/books/${newBookId}/edit`);
+            router.push(`/books/${newBookId}/edit`);
         }
     };
 
@@ -129,7 +130,7 @@ export default function BookEditPage({ params }: { params: { bookId: string } })
                 <h1 className="text-3xl font-heading font-bold text-primary dark:text-accent">
                     {bookData?.title}
                 </h1>
-                <Button onClick={handleSaveContent} disabled={isSaving}>
+                <Button className="p-4" onClick={handleSaveContent} disabled={isSaving}>
                     {isSaving ? 'Saving...' : 'Save Book'}
                 </Button>
             </div>

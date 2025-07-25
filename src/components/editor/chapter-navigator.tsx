@@ -66,7 +66,7 @@ export default function ChapterNavigator({
             <div className="mt-6">
                 <Button
                     onClick={onAddChapter}
-                    className="w-full flex items-center justify-center bg-accent hover:bg-accent/90 text-white"
+                    className="p-4 w-full flex items-center justify-center bg-accent hover:bg-accent/90 text-white"
                 >
                     <PlusIcon className="h-5 w-5 mr-2" />
                     Add Chapter

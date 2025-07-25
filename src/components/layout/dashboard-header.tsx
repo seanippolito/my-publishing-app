@@ -12,10 +12,10 @@ interface DashboardHeaderProps {
 export default function DashboardHeader({ userImage, userName }: DashboardHeaderProps) {
     // Simple title mapping based on common paths
     const getPageTitle = (pathname: string) => {
-        if (pathname.startsWith('/dashboard/books')) return 'My Story Vault';
-        if (pathname.startsWith('/dashboard/ai-tools')) return 'AI Magic Tools';
-        if (pathname.startsWith('/dashboard/community')) return 'Friendship Forest';
-        if (pathname.startsWith('/dashboard/settings')) return 'My Settings Pad';
+        if (pathname.startsWith('/books')) return 'My Story Vault';
+        if (pathname.startsWith('/ai-tools')) return 'AI Magic Tools';
+        if (pathname.startsWith('/community')) return 'Friendship Forest';
+        if (pathname.startsWith('/settings')) return 'My Settings Pad';
         return 'My Home Base'; // Default for /dashboard
     };
 
