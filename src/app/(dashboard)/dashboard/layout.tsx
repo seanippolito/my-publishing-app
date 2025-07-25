@@ -3,6 +3,7 @@ import { currentUser } from '@clerk/nextjs/server'; // Correct import for curren
 import type { User } from '@clerk/nextjs/server'; // CORRECTED: User type import from the server module
 import DashboardSidebar from '@/components/layout/dashboard-sidebar';
 import DashboardHeader from '@/components/layout/dashboard-header';
+import AIChatBubble from '@/components/ai/ai-chat-bubble'; // IMPORT THE NEW COMPONENT
 
 interface DashboardLayoutProps {
     children: React.ReactNode;

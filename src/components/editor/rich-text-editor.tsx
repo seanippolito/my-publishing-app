@@ -7,12 +7,11 @@ import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
-import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary'; // Import as component
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin'; // To capture editor state
 
 // Node imports from their respective packages
 import { HeadingNode, QuoteNode } from '@lexical/rich-text'; // Corrected: removed LexicalNode
-import { ListItemNode, ListNode } from '@lexical/list';
+import { ListNode, ListItemNode } from '@lexical/list';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { TableNode, TableCellNode, TableRowNode } from '@lexical/table';
 import { AutoLinkNode, LinkNode } from '@lexical/link';
@@ -22,15 +21,17 @@ import theme from '@/styles/lexical-editor-theme'; // Our custom theme
 import ToolbarPlugin from './plugins/ToolbarPlugin';
 import AutoLinkPlugin from './plugins/AutoLinkPlugin';
 import { ListPlugin } from '@lexical/react/LexicalListPlugin'; // Ensure explicit named import if needed
-import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin'; // Ensure explicit named import if needed
+import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
+import {ErrorBoundary} from "next/dist/client/components/error-boundary";
+import {LexicalErrorBoundary} from "@lexical/react/LexicalErrorBoundary"; // Ensure explicit named import if needed
 
 
 // Define the nodes that our editor will support
-const editorNodes: Array<typeof LexicalNode> = [
+const editorNodes: Array<any> = [
     HeadingNode,
     QuoteNode,
     ListNode,
-    // ListItemNode,
+    ListItemNode,
     CodeNode,
     CodeHighlightNode,
     TableNode,
@@ -71,24 +72,19 @@ export default function RichTextEditor({ initialContent, onContentChange }: Rich
                 {/* Toolbar */}
                 <ToolbarPlugin />
 
-                {/* Content Area wrapped with LexicalErrorBoundary */}
-                {/*<LexicalErrorBoundary fallback={*/}
-                {/*    <div className="editor-error-fallback text-red-500 p-4">*/}
-                {/*        <p>Lexical Editor encountered an error. Please try refreshing.</p>*/}
-                {/*    </div>*/}
-                {/*}>*/}
-                {/*    <div className="editor-inner flex-grow overflow-auto p-2">*/}
-                {/*        <RichTextPlugin*/}
-                {/*            contentEditable={<ContentEditable className="LexicalContentEditable" />}*/}
-                {/*            placeholder={*/}
-                {/*                <div className="editor-placeholder">*/}
-                {/*                    Start writing your amazing story here...*/}
-                {/*                </div>*/}
-                {/*            }*/}
-                {/*            // ErrorBoundary prop removed as we are wrapping the plugin with LexicalErrorBoundary component*/}
-                {/*        />*/}
-                {/*    </div>*/}
-                {/*</LexicalErrorBoundary>*/}
+            {/*     Content Area wrapped with LexicalErrorBoundary*/}
+                    <div className="editor-inner flex-grow overflow-auto p-2">
+                        <RichTextPlugin
+                            ErrorBoundary={LexicalErrorBoundary}
+                            contentEditable={<ContentEditable className="LexicalContentEditable"/>}
+                            placeholder={
+                                <div className="editor-placeholder">
+                                    Start writing your amazing story here...
+                                </div>
+                            }
+
+                        />
+                    </div>
 
                 {/* Plugins */}
                 <HistoryPlugin />

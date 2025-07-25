@@ -6,6 +6,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import { dark, neobrutalism, shadesOfPurple } from '@clerk/themes'
+import AIChatBubble from "@/components/ai/ai-chat-bubble";
 
 // Configure fonts with variables
 const bubblegumSans = Bubblegum_Sans({
@@ -47,6 +48,8 @@ export default function RootLayout({
                 <body>
                     {children}
                     <Toaster position="bottom-right" reverseOrder={false} />
+                    {/* NEW: AI Chat Bubble - globally available in dashboard */}
+                    <AIChatBubble />
                 </body>
             </html>
         </ClerkProvider>

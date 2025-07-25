@@ -110,12 +110,12 @@ export default function SignedInHomePage({ userName }: SignedInHomePageProps) {
                     <span className="text-3xl font-heading font-extrabold text-accent">Creathor</span>
                 </div>
                 <nav className="flex items-center space-x-2 md:space-x-4">
-                    <Link href="/dashboard/books/new" passHref>
+                    <Link href="/books/new" passHref>
                         <Button variant="ghost" className="p-4 text-white hover:text-accent hover:bg-white/20 transition-all duration-200" title="Start New Story">
                             <PlusCircleIcon className="h-6 w-6" />
                         </Button>
                     </Link>
-                    <Link href="/dashboard/books" passHref>
+                    <Link href="/books" passHref>
                         <Button variant="ghost" className="p-4 text-white hover:text-accent hover:bg-white/20 transition-all duration-200" title="Continue Adventures">
                             <PencilSquareIcon className="h-6 w-6" />
                         </Button>
@@ -160,13 +160,13 @@ export default function SignedInHomePage({ userName }: SignedInHomePageProps) {
                         Your Creator's Workbench
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <Link href="/dashboard/books/new" passHref>
+                        <Link href="/books/new" passHref>
                             <Button className="w-full flex flex-col items-center justify-center p-6 bg-accent hover:bg-accent/90 text-primary font-semibold text-lg md:text-xl h-32 rounded-xl shadow-md transition-all duration-300 transform hover:scale-105 animate-bounce-once">
                                 <PlusCircleIcon className="h-10 w-10 mb-2" />
                                 Start New Story!
                             </Button>
                         </Link>
-                        <Link href="/dashboard/books" passHref>
+                        <Link href="/books" passHref>
                             <Button className="w-full flex flex-col items-center justify-center p-6 bg-secondary hover:bg-secondary/90 text-primary font-semibold text-lg md:text-xl h-32 rounded-xl shadow-md transition-all duration-300 transform hover:scale-105">
                                 <PencilSquareIcon className="h-10 w-10 mb-2" />
                                 Continue My Adventures!
