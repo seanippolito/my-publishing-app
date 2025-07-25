@@ -9,48 +9,52 @@ import {
     ChatBubbleLeftRightIcon,
     Cog6ToothIcon,
     HomeIcon,
-    ArrowRightStartOnRectangleIcon // Icon for Logout
+    ArrowRightStartOnRectangleIcon
 } from '@heroicons/react/24/outline';
 import { Button } from '@/components/ui/button';
-import { SignOutButton } from '@clerk/nextjs'; // Import SignOutButton
+import { SignOutButton } from '@clerk/nextjs';
 
 interface DashboardSidebarProps {
     userName: string;
 }
 
 const navItems = [
-    { name: 'Overview', href: '/dashboard', icon: HomeIcon },
-    { name: 'My Books', href: '/dashboard/books', icon: BookOpenIcon },
-    { name: 'AI Tools', href: '/dashboard/ai-tools', icon: SparklesIcon },
-    { name: 'Community', href: '/dashboard/community', icon: ChatBubbleLeftRightIcon },
-    { name: 'Settings', href: '/dashboard/settings', icon: Cog6ToothIcon },
+    { name: 'My Home Base', href: '/dashboard', icon: HomeIcon }, // Changed 'Overview'
+    { name: 'My Story Vault', href: '/dashboard/books', icon: BookOpenIcon }, // Changed 'My Books'
+    { name: 'AI Magic Tools', href: '/dashboard/ai-tools', icon: SparklesIcon }, // Changed 'AI Tools'
+    { name: 'Friendship Forest', href: '/dashboard/community', icon: ChatBubbleLeftRightIcon }, // Changed 'Community'
+    { name: 'My Settings Pad', href: '/dashboard/settings', icon: Cog6ToothIcon }, // Changed 'Settings'
 ];
 
 export default function DashboardSidebar({ userName }: DashboardSidebarProps) {
     const pathname = usePathname();
 
     return (
-        <aside className="w-64 bg-secondary text-text-light p-6 flex flex-col justify-between shadow-lg">
+        <aside className="w-64 bg-primary text-text-light p-6 flex flex-col justify-between shadow-lg rounded-r-2xl"> {/* Primary background, rounded right corners */}
             <div>
-                <div className="flex items-center gap-2 text-2xl font-heading font-bold mb-8 text-accent">
-                    {/* Using a placeholder for the logo here, as per your "electric hammer" request */}
-                    <img src="/images/creathor-hammer-logo.svg" alt="Creathor Logo" className="h-7 w-auto" />
-                    Creathor
+                <div className="flex items-center gap-2 text-2xl font-heading font-extrabold mb-8 text-accent"> {/* Stronger heading font */}
+                    <Link href="/" passHref>
+                        <div className="flex items-center gap-2">
+                            <img src="/images/creathor-hammer-logo.svg" alt="Creathor Logo" className="h-8 w-auto filter brightness-125 saturate-150" />
+                            Creathor
+                        </div>
+                    </Link>
                 </div>
                 <nav>
                     <ul>
                         {navItems.map((item) => {
+                            // Adjusting active state for nested routes
                             const isActive = pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href));
                             return (
-                                <li key={item.name} className="mb-4">
+                                <li key={item.name} className="mb-3"> {/* Slightly less mb */}
                                     <Link
                                         href={item.href}
-                                        className={`flex items-center p-3 rounded-lg transition-colors duration-200 ${
-                                            isActive ? 'bg-primary text-white' : 'hover:bg-primary/70'
+                                        className={`flex items-center p-3 rounded-lg transition-all duration-200 text-lg font-body font-semibold transform hover:scale-105 ${ // Increased font size, added scale hover
+                                            isActive ? 'bg-accent text-primary shadow-md' : 'hover:bg-secondary/70 text-white' // Accent for active, secondary hover
                                         }`}
                                     >
                                         <item.icon className="h-6 w-6 mr-3" />
-                                        <span className="font-body text-lg">{item.name}</span>
+                                        <span>{item.name}</span>
                                     </Link>
                                 </li>
                             );
@@ -58,16 +62,21 @@ export default function DashboardSidebar({ userName }: DashboardSidebarProps) {
                     </ul>
                 </nav>
             </div>
-            <div className="mt-8 text-center border-t border-primary/50 pt-4">
-                <p className="font-heading font-semibold text-lg">{userName}</p>
-                <p className="text-sm opacity-80 mb-4">Publisher Account</p>
-                {/* Sign Out Button */}
-                {/*<SignOutButton signOutCallback={() => window.location.href = '/'}>*/}
-                {/*    <Button className="w-full flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-semibold">*/}
-                {/*        <ArrowRightStartOnRectangleIcon className="h-5 w-5 mr-2" />*/}
-                {/*        Sign Out*/}
-                {/*    </Button>*/}
-                {/*</SignOutButton>*/}
+            <div className="mt-8 text-center border-t-2 border-accent/50 pt-4"> {/* Accent border */}
+                <p className="font-heading font-bold text-xl text-accent">{userName}</p> {/* Accent color for username */}
+                <p className="text-sm opacity-80 mb-4 text-white">Your Creator Rank!</p> {/* Playful label */}
+                <SignOutButton>
+                    <Button
+                        onClick={async () => {
+                            // await fetch('/path-to-sign-out-api'); // Optional: Replace with your sign-out API path if needed
+                            window.location.href = '/';
+                        }}
+                        className="p-4 w-full flex items-center justify-center bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full shadow-md"
+                    >
+                        <ArrowRightStartOnRectangleIcon className="h-5 w-5 mr-2" />
+                        Log Out
+                    </Button>
+                </SignOutButton>
             </div>
         </aside>
     );
