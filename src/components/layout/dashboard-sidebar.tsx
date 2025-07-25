@@ -20,10 +20,10 @@ interface DashboardSidebarProps {
 
 const navItems = [
     { name: 'My Home Base', href: '/dashboard', icon: HomeIcon }, // Changed 'Overview'
-    { name: 'My Story Vault', href: '/dashboard/books', icon: BookOpenIcon }, // Changed 'My Books'
-    { name: 'AI Magic Tools', href: '/dashboard/ai-tools', icon: SparklesIcon }, // Changed 'AI Tools'
-    { name: 'Friendship Forest', href: '/dashboard/community', icon: ChatBubbleLeftRightIcon }, // Changed 'Community'
-    { name: 'My Settings Pad', href: '/dashboard/settings', icon: Cog6ToothIcon }, // Changed 'Settings'
+    { name: 'My Story Vault', href: '/books', icon: BookOpenIcon }, // Changed 'My Books'
+    { name: 'AI Magic Tools', href: '/ai-tools', icon: SparklesIcon }, // Changed 'AI Tools'
+    { name: 'Friendship Forest', href: '/community', icon: ChatBubbleLeftRightIcon }, // Changed 'Community'
+    { name: 'My Settings Pad', href: '/settings', icon: Cog6ToothIcon }, // Changed 'Settings'
 ];
 
 export default function DashboardSidebar({ userName }: DashboardSidebarProps) {
