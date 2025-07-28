@@ -106,7 +106,7 @@ export default function SignedInHomePage({ userName }: SignedInHomePageProps) {
             {/* Header for Signed-In Page */}
             <header className="w-full px-6 py-4 flex justify-between items-center z-10 sticky top-0 bg-primary/90 dark:bg-background-offset-dark/90 backdrop-blur-sm shadow-lg text-white">
                 <div className="flex items-center gap-3">
-                    <img src="/images/creathor-hammer-logo.svg" alt="Creathor Logo" className="h-8 w-auto filter brightness-125 saturate-150" />
+                    <img src="/images/book-worm-1.svg" alt="Creathor Logo" className="h-8 w-auto filter brightness-125 saturate-150" />
                     <span className="text-3xl font-heading font-extrabold text-accent">Creathor</span>
                 </div>
                 <nav className="flex items-center space-x-2 md:space-x-4">

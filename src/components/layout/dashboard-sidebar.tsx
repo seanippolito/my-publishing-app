@@ -35,7 +35,7 @@ export default function DashboardSidebar({ userName }: DashboardSidebarProps) {
                 <div className="flex items-center gap-2 text-2xl font-heading font-extrabold mb-8 text-accent"> {/* Stronger heading font */}
                     <Link href="/" passHref>
                         <div className="flex items-center gap-2">
-                            <img src="/images/creathor-hammer-logo.svg" alt="Creathor Logo" className="h-8 w-auto filter brightness-125 saturate-150" />
+                            <img src="/images/book-worm-1.svg" alt="Creathor Logo" className="h-8 w-auto filter brightness-125 saturate-150" />
                             Creathor
                         </div>
                     </Link>
