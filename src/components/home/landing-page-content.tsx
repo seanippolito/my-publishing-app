@@ -13,7 +13,7 @@ export default function HomePage() {
             <header className="w-full px-6 py-4 flex justify-between items-center z-20 sticky top-0 bg-primary/90 dark:bg-background-dark/90 backdrop-blur-sm shadow-lg text-white">
                 <div className="flex items-center gap-3">
                     {/* Creathor Logo - You need to place your electric hammer SVG/PNG here */}
-                    <img src="/images/creathor-hammer-logo.svg" alt="Creathor Logo" className="h-8 md:h-10 w-auto filter brightness-125 saturate-150" /> {/* Added filters for pop */}
+                    <img src="/images/book-worm-1.svg" alt="Creathor Logo" className="h-8 md:h-10 w-auto filter brightness-125 saturate-150" /> {/* Added filters for pop */}
                     <span className="text-3xl md:text-4xl font-heading font-extrabold text-accent">Creathor</span> {/* Accent color for logo text */}
                 </div>
                 <nav className="space-x-3 md:space-x-4">
